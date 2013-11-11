@@ -1,0 +1,7 @@
+/app/config/packages/juy
+/bootstrap/compiled.php
+/vendor
+composer.phar
+composer.lock
+.DS_Store
+dump.sql
