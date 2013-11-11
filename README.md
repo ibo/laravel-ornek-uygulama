@@ -1,7 +1,7 @@
 ## Laravel 4 Soru / Cevap Uygulaması (Örnek Proje)
 
 Laravel Framework'e yeni başlayanlar için basit bir soru / cevap uygulaması hazırladım. 
-Bol bol Türkçe yorum satırlarıyla hangi satırı niçin yazdığımızı açıklamaya çalıştım.
+Bol bol Türkçe yorum satırlarıyla hangi kodu niçin yazdığımızı açıklamaya çalıştım.
 
 ### Kurulum
 
