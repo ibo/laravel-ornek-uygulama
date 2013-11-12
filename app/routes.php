@@ -38,8 +38,8 @@ Route::get('/soru/{id}', array('as' => 'getQuestion', 'uses' => 'QuestionsContro
 // QuestionsController Sınıfında Tanımlı newQuestionForm metodu çalıştırılır.
 Route::get('/soru-sor', array('as' => 'newQuestionForm', 'uses' => 'QuestionsController@newQuestionForm', 'before' => 'auth'));
 
-// QuestionsController Sınıfında Tanımlı newQuestion metodu çalıştırılır. (Sadece POST Metoduyla, CSRF korumasıyla Çalışır)
-Route::post('/soru-sor', array('as' => 'newQuestion', 'uses' => 'QuestionsController@newQuestion', 'before' => 'csrf'));
+// QuestionsController Sınıfında Tanımlı newQuestion metodu çalıştırılır. (Sadece POST Metoduyla, AUTH korumasıyla Çalışır)
+Route::post('/soru-sor', array('as' => 'newQuestion', 'uses' => 'QuestionsController@newQuestion', 'before' => 'auth'));
 
-// CommentsController Sınıfında Tanımlı newComment metodu çalıştırılır. (Sadece POST Metoduyla, CSRF korumasıyla Çalışır)
-Route::post('/yorum-ekle', array('as' => 'newComment', 'uses' => 'CommentsController@newComment', 'before' => 'csrf'));
+// CommentsController Sınıfında Tanımlı newComment metodu çalıştırılır. (Sadece POST Metoduyla, AUTH korumasıyla Çalışır)
+Route::post('/yorum-ekle', array('as' => 'newComment', 'uses' => 'CommentsController@newComment', 'before' => 'auth'));
