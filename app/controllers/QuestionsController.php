@@ -9,7 +9,7 @@ class QuestionsController extends BaseController
 	public function index()
 	{
                 // SORULARI TABLODAN ÇEKELİM
-                $questions = Questions::with('user')->orderBy('id','DESC')->paginate(5);
+                $questions = Question::with('user')->orderBy('id','DESC')->paginate(5);
                 
                 // SORULARI VIEW'E AKTARALIM VE VIEW'İ ÇALIŞTIRALIM
 		return View::make('questions/index', compact('questions'));
@@ -21,7 +21,7 @@ class QuestionsController extends BaseController
 	public function detail($id)
 	{
                 // SORUYU TABLODAN ÇEKELİM
-                $question = Questions::with('user')->where('id', '=', $id)->orderBy('id','DESC')->first();
+                $question = Question::with('user')->where('id', '=', $id)->orderBy('id','DESC')->first();
                 
                 // EĞER SORU BULUNAMADIYSA YÖNLENDİRELİM
                 if (!$question) {
@@ -29,10 +29,10 @@ class QuestionsController extends BaseController
                 }
                 
                 // SAĞ BÖLÜM İÇİN RASTGELE SORULAR ÇEKELİM
-                $randomQuestions = Questions::take(3)->orderBy(DB::raw('RAND()'))->get();
+                $randomQuestions = Question::take(3)->orderBy(DB::raw('RAND()'))->get();
                 
                 // GÖNDERİLEN YANITLARI ÇEKELİM
-                $comments = Comments::with('user')->where('question_id', '=', $id)->get();
+                $comments = Comment::with('user')->where('question_id', '=', $id)->get();
                 
                 // VIEW'İ ÇALIŞTIRALIM
 		return View::make('questions.detail', compact('question', 'randomQuestions', 'comments'));
@@ -81,7 +81,7 @@ class QuestionsController extends BaseController
                 } else {
                     
                     // SORUYU VERİTABANINA EKLEYELİM
-                    $question = new Questions();
+                    $question = new Question();
                     $question->user_id = Auth::user()->id;
                     $question->title = e(trim($postData['title']));
                     $question->content = e(trim($postData['content']));
