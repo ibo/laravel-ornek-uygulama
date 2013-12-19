@@ -29,10 +29,10 @@ class QuestionsController extends BaseController
                 }
                 
                 // SAĞ BÖLÜM İÇİN RASTGELE SORULAR ÇEKELİM
-                $randomQuestions = Questions::take(3)->orderBy(DB::raw('RAND()'))->get();
+                $randomQuestions = Question::take(3)->orderBy(DB::raw('RAND()'))->get();
                 
                 // GÖNDERİLEN YANITLARI ÇEKELİM
-                $comments = Comments::with('user')->where('question_id', '=', $id)->get();
+                $comments = Comment::with('user')->where('question_id', '=', $id)->get();
                 
                 // VIEW'İ ÇALIŞTIRALIM
 		return View::make('questions.detail', compact('question', 'randomQuestions', 'comments'));
