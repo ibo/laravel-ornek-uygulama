@@ -1,25 +1,58 @@
-## Laravel PHP Framework
+## Laravel 4.2.7 Soru / Cevap Uygulaması (Örnek Proje)
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/downloads.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+Laravel Framework'e yeni başlayanlar için basit bir soru / cevap uygulaması hazırladım. 
+Bol bol Türkçe yorum satırlarıyla hangi kodu niçin yazdığımızı açıklamaya çalıştım.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, and caching.
+### Kurulum
 
-Laravel aims to make the development process a pleasing one for the developer without sacrificing application functionality. Happy developers make the best code. To this end, we've attempted to combine the very best of what we have seen in other web frameworks, including frameworks implemented in other languages, such as Ruby on Rails, ASP.NET MVC, and Sinatra.
+Eğer makinenizde Composer kurulu değilse, ilk adım bunu kurmak olmalıdır. Composer kurulduktan sonra terminalden proje dizinine giderek:
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+```
+composer install
+```
 
-## Official Documentation
+komutunu çalıştırdığınızda kurulum başlayacaktır. Kurulumla ilgili detaylı bilgi için http://laravel.com/docs/installation adresini inceleyebilirsiniz.
 
-Documentation for the entire framework can be found on the [Laravel website](http://laravel.com/docs).
+### Uygulamanın Yapılandırılması
 
-### Contributing To Laravel
+Laravel'in kurulumunu tamamladıktan sonra uygulamayı çalışır duruma getirmek gerekiyor. Öncelikle;
 
-**All issues and pull requests should be filed on the [laravel/framework](http://github.com/laravel/framework) repository.**
+```
+app/config/database.php
+```
+ 
+dosyasını açın ve;
+ 
+``` php
+'mysql' => array(
+'driver'    => 'mysql',
+'host'      => 'localhost',
+'database'  => 'laravel_soru_cevap',
+'username'  => 'root',
+'password'  => 'root',
+'charset'   => 'utf8',
+'collation' => 'utf8_unicode_ci',
+'prefix'    => '',
+),
+```
 
-### License
+satırlarını çalışacağınız ortama göre düzenleyin. 
+Ben veritabanı ismi olarak laravel_soru_cevap kullanmıştım. Siz de aynı isimle veritabanı oluşturabilirsiniz.
+(Veritabanının UTF-8 olmasına dikkat etmenizi öneririm)
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+#### Migration
+
+Veritabanını oluşturduysanız ve mysql bağlantı ayarlarınızı tamamladıysanız aşağıda ki adımları gerçekleştirerek kurulumu tamamlayabilirsiniz.
+
+* Terminalden proje dizinine gidin
+* Sırasıyla aşağıdaki komutları çalıştırın
+
+```
+php artisan migrate:install
+php artisan migrate
+php artisan db:seed
+```
+
+Bu komutlar sayesinde veritabanınıza ilgili tablolar oluşturulacak ve tablolara örnek kayıtlar eklenecektir.
+
+Artık browser üzerinden Laravel projesini çalıştırabilirsiniz.
